@@ -100,8 +100,8 @@
 					
 					try{
 						var postData = {
-					              roadAddress : data.roadAddress,
-					              zonecode : data.zonecode
+					              message : data.roadAddress,
+					              //zonecode : data.zonecode
 					          };
 						window.postMessageToiOS(postData)
 					}catch(err){
