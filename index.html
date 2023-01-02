@@ -103,7 +103,7 @@
 					              roadAddress : data.roadAddress,
 					              zonecode : data.zonecode
 					          };
-						window.postMessageToiOS(postData)
+						window.webkit.messageHandlers.E4NET.postMessage(postData);
 					}catch(err){
 						alert(err)
 					}
