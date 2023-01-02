@@ -18,7 +18,11 @@
 	
 		window.addEventListener("message", onReceivedPostMessage, false);
 		
-		function postMessageToiOS(postData) {
+		function postMessageToIOS(fullRoadAddr, zonecode) {
+			var postData = {
+			      roadAddress : fullRoadAddr, 
+			      zonecode : zonecode
+			  };
 			window.webkit.messageHandlers.E4NET.postMessage(postData);
 	    }
 
@@ -96,14 +100,8 @@
 					// 주소만 필요하므로 이것만 전송한다.
 					if (window.KihyeonApplication !== undefined){
 						window.KihyeonApplication.processDATA(data.zonecode,fullRoadAddr);	
-					}
-					
-					if (window.webkit !== undefined){
-						var postData = {
-					              roadAddress : data.roadAddress,
-					              zonecode : data.zonecode
-					          };
-						window.webkit.messageHandlers.E4NET.postMessage(postData);
+					}else if (window.webkit !== undefined){
+						window.postMessageToIOS(fullRoadAddr, data.zonecode);
 					}
 					
 				},
@@ -121,6 +119,7 @@
 // 			      roadAddress : "yaImma"
 // 			  };
 // 			window.webkit.messageHandlers.E4NET.postMessage(postDat);
+			window.postMessageToIOS("hoho", "haha");
 		}
 		// 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
 		// resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
