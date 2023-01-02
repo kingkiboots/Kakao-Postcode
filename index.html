@@ -98,14 +98,12 @@
 						window.KihyeonApplication.processDATA(data.zonecode,fullRoadAddr);	
 					}
 					
-					try{
+					if (window.webkit !== undefined){
 						var postData = {
 					              roadAddress : data.roadAddress,
 					              zonecode : data.zonecode
 					          };
 						window.webkit.messageHandlers.E4NET.postMessage(postData);
-					}catch(err){
-						alert(err)
 					}
 					
 				},
